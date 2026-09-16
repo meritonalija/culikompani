@@ -1,0 +1,33 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a1118"/>
+      <stop offset="0.5" stop-color="#0f1d2d"/>
+      <stop offset="1" stop-color="#0a1118"/>
+    </linearGradient>
+    <linearGradient id="truckBody" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f5be62"/>
+      <stop offset="1" stop-color="#d08d2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 630C240 590 450 595 700 650C980 710 1200 720 1600 630V900H0V630Z" fill="#182332"/>
+  <path d="M0 700H1600" stroke="#465a70" stroke-width="12"/>
+
+  <g transform="translate(110 150)">
+    <g transform="translate(0 30)">
+      <path d="M120 330H500V440H120V330Z" fill="#edf5fb" stroke="#233548" stroke-width="4"/>
+      <path d="M500 330H882V440H500V330Z" fill="#eaf3fa" stroke="#233548" stroke-width="4"/>
+      <path d="M70 440H970V520H40V477C40 457 56 440 76 440H70Z" fill="url(#truckBody)" stroke="#233548" stroke-width="4"/>
+      <path d="M110 246H470L540 330H110V246Z" fill="#7d1726" stroke="#233548" stroke-width="4"/>
+      <path d="M508 266H860L910 330H508V266Z" fill="#7d1726" stroke="#233548" stroke-width="4"/>
+      <circle cx="280" cy="560" r="58" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="280" cy="560" r="22" fill="#abc3d5"/>
+      <circle cx="750" cy="560" r="58" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="750" cy="560" r="22" fill="#abc3d5"/>
+      <path d="M165 196C185 150 222 116 273 116C327 116 367 153 384 196L410 264H138L165 196Z" fill="#f4f9fd" stroke="#233548" stroke-width="4"/>
+      <path d="M195 206H350" stroke="#efc266" stroke-width="4"/>
+      <rect x="230" y="140" width="90" height="18" rx="6" fill="#0d1620"/>
+    </g>
+  </g>
+</svg>

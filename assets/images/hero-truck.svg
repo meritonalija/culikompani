@@ -1,0 +1,60 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08131c"/>
+      <stop offset="0.5" stop-color="#0d1d2b"/>
+      <stop offset="1" stop-color="#08131c"/>
+    </linearGradient>
+    <linearGradient id="road" x1="800" y1="0" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1b2432"/>
+      <stop offset="1" stop-color="#0c1118"/>
+    </linearGradient>
+    <linearGradient id="truckBody" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#b81f2b"/>
+      <stop offset="1" stop-color="#680f1d"/>
+    </linearGradient>
+    <linearGradient id="cab" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f3f7fb"/>
+      <stop offset="1" stop-color="#bccad8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1260" cy="180" r="170" fill="#f0b55d" opacity="0.18"/>
+  <circle cx="340" cy="200" r="220" fill="#86d2ff" opacity="0.12"/>
+  <path d="M0 660C250 620 460 620 680 670C960 730 1230 720 1600 640V900H0V660Z" fill="url(#road)"/>
+  <path d="M0 720H1600" stroke="#4a5a6f" stroke-width="12"/>
+  <path d="M0 760H1600" stroke="#d5a757" stroke-width="2" opacity="0.6"/>
+
+  <g transform="translate(120 145)">
+    <g transform="translate(0 95)">
+      <rect x="330" y="140" width="510" height="150" rx="12" fill="#6f1221" stroke="#301519" stroke-width="5"/>
+      <path d="M350 166H430V275H350V166Z" fill="#3d0913" opacity="0.8"/>
+      <path d="M370 145H670" stroke="#ecbf74" stroke-width="6" opacity="0.7"/>
+      <rect x="480" y="180" width="70" height="48" rx="7" fill="#dfe8f3"/>
+      <rect x="560" y="180" width="75" height="48" rx="7" fill="#dfe8f3"/>
+      <path d="M775 278H330V332H775V278Z" fill="#2d3646"/>
+      <path d="M330 248H770V270H330V248Z" fill="#edb85c" opacity="0.7"/>
+    </g>
+
+    <g>
+      <path d="M170 290H360V420H110C92 420 78 406 78 388V330C78 308 96 290 118 290H170Z" fill="url(#cab)" stroke="#2d3646" stroke-width="4"/>
+      <path d="M360 290H540V420H360V290Z" fill="#f3f7fb" stroke="#2d3646" stroke-width="4"/>
+      <path d="M95 430H820V520H78V456C78 440 89 430 103 430H95Z" fill="url(#truckBody)" stroke="#2e3848" stroke-width="4"/>
+      <path d="M170 258H300" stroke="#e8b761" stroke-width="4"/>
+      <path d="M540 290H688L715 420H540L540 290Z" fill="#f4f7fb" stroke="#2d3646" stroke-width="4"/>
+      <path d="M688 320H760V420H686L688 320Z" fill="#f4f7fb" stroke="#2d3646" stroke-width="4"/>
+      <path d="M710 420H824V484H710V420Z" fill="#e5a93b" stroke="#2d3646" stroke-width="4"/>
+      <path d="M430 150C450 110 480 90 520 90C565 90 598 118 613 160L634 214H410L430 150Z" fill="#f3f7fb" stroke="#2d3646" stroke-width="4"/>
+      <rect x="430" y="120" width="80" height="18" rx="6" fill="#0e1720"/>
+      <rect x="425" y="200" width="100" height="25" rx="8" fill="#0e1720"/>
+      <circle cx="210" cy="540" r="52" fill="#0b0f16" stroke="#3b495c" stroke-width="10"/>
+      <circle cx="210" cy="540" r="22" fill="#b5c5d5"/>
+      <circle cx="610" cy="540" r="52" fill="#0b0f16" stroke="#3b495c" stroke-width="10"/>
+      <circle cx="610" cy="540" r="22" fill="#b5c5d5"/>
+      <path d="M400 210H595" stroke="#cfa34d" stroke-width="4"/>
+      <rect x="160" y="250" width="130" height="42" rx="10" fill="#0e1720"/>
+      <path d="M166 258H285" stroke="#f0b55d" stroke-width="4"/>
+      <path d="M166 273H260" stroke="#f0b55d" stroke-width="4" opacity="0.7"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a1118"/>
+      <stop offset="0.5" stop-color="#101e2d"/>
+      <stop offset="1" stop-color="#091319"/>
+    </linearGradient>
+    <linearGradient id="road" x1="800" y1="0" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1a2737"/>
+      <stop offset="1" stop-color="#0d141b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f7c96f"/>
+      <stop offset="1" stop-color="#d08d2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 620C260 590 500 600 698 648C930 705 1190 713 1600 620V900H0V620Z" fill="url(#road)"/>
+  <path d="M0 700H1600" stroke="#444f62" stroke-width="12"/>
+  <path d="M0 742H1600" stroke="#d9a760" stroke-width="2" opacity="0.5"/>
+
+  <g transform="translate(100 150)">
+    <g transform="translate(0 30)">
+      <path d="M30 300H390V404H72C52 404 36 388 36 368V318C36 308 42 300 30 300Z" fill="#eaf3fa" stroke="#233548" stroke-width="4"/>
+      <path d="M390 300H610V404H390V300Z" fill="#eff7fd" stroke="#233548" stroke-width="4"/>
+      <path d="M610 300H760V404H610V300Z" fill="#eef5fa" stroke="#233548" stroke-width="4"/>
+      <path d="M120 210H350V300H120V210Z" fill="#a11f2d" stroke="#233548" stroke-width="4"/>
+      <path d="M440 210H585V300H440V210Z" fill="#a11f2d" stroke="#233548" stroke-width="4"/>
+      <path d="M110 403H820V478H90V430C90 416 101 404 116 404H110Z" fill="url(#gold)" stroke="#233548" stroke-width="4"/>
+      <circle cx="230" cy="535" r="52" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="230" cy="535" r="20" fill="#abc3d5"/>
+      <circle cx="620" cy="535" r="52" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="620" cy="535" r="20" fill="#abc3d5"/>
+    </g>
+
+    <g transform="translate(620 110)">
+      <path d="M40 320H375V430H60C42 430 28 416 28 398V348C28 331 42 320 60 320H40Z" fill="#edf5fb" stroke="#233548" stroke-width="4"/>
+      <path d="M375 320H620V430H375V320Z" fill="#f4f9fd" stroke="#233548" stroke-width="4"/>
+      <path d="M120 235H360V320H120V235Z" fill="#911a28" stroke="#233548" stroke-width="4"/>
+      <path d="M392 250H577V320H392V250Z" fill="#f0c66a" stroke="#233548" stroke-width="4"/>
+      <path d="M45 430H690V500H27V456C27 441 39 430 54 430H45Z" fill="url(#gold)" stroke="#233548" stroke-width="4"/>
+      <circle cx="165" cy="560" r="52" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="165" cy="560" r="20" fill="#abc3d5"/>
+      <circle cx="520" cy="560" r="52" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="520" cy="560" r="20" fill="#abc3d5"/>
+    </g>
+
+    <g transform="translate(840 0)">
+      <path d="M20 390H470V502H80C49 502 24 477 24 446V390H20Z" fill="#f0f5fb" stroke="#233548" stroke-width="4"/>
+      <path d="M70 330H430V390H70V330Z" fill="#951d29" stroke="#233548" stroke-width="4"/>
+      <path d="M442 350H520V502H442V350Z" fill="#f2bd5e" stroke="#233548" stroke-width="4"/>
+      <path d="M10 502H540V572H0V539C0 521 14 502 32 502H10Z" fill="url(#gold)" stroke="#233548" stroke-width="4"/>
+      <circle cx="170" cy="610" r="58" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="170" cy="610" r="22" fill="#abc3d5"/>
+      <circle cx="430" cy="610" r="58" fill="#0b1016" stroke="#3e4b5f" stroke-width="10"/>
+      <circle cx="430" cy="610" r="22" fill="#abc3d5"/>
+    </g>
+  </g>
+</svg>
