@@ -206,9 +206,9 @@
       <a href="#quote" class="btn btn-primary btn-block mobile-quote-btn" data-i18n="header_cta" aria-label="Kërko ofertë">
         <span>KËRKO OFERTË</span>
       </a>
-      <a href="tel:+38970311100" class="btn btn-secondary btn-block">
+      <a href="tel:078338765" class="btn btn-secondary btn-block">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>+389 70 311 100</span>
+        <span>NUMRI I ZYRËS:<br>078 338 765</span>
       </a>
     </div>
   </div>
@@ -425,9 +425,9 @@
 
           <div class="about-actions">
             <a href="#quote" class="btn btn-primary" data-i18n="about_cta">MËSO MË SHUMË PËR CULI</a>
-            <a href="tel:+38970311100" class="about-contact-link">
+            <a href="tel:078338765" class="about-contact-link">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+389 70 311 100</span>
+              <span>NUMRI I ZYRËS:<br>078 338 765</span>
             </a>
           </div>
         </div>
@@ -944,12 +944,6 @@
           </p>
         </div>
 
-        <div class="gallery-filters" id="galleryFilterTabs">
-          <button class="gallery-tab active" data-tab="all" data-i18n="gal_all">Të Gjitha</button>
-          <button class="gallery-tab" data-tab="trucks" data-i18n="gal_trucks">Kamionë</button>
-          <button class="gallery-tab" data-tab="cars" data-i18n="gal_cars">Vetura</button>
-          <button class="gallery-tab" data-tab="europe" data-i18n="gal_europe">Evropë</button>
-        </div>
       </div>
 
       <!-- Gallery Grid with Lightbox Triggers -->
@@ -1046,7 +1040,7 @@
             </div>
           </div>
           <div class="social-card-image">
-            <img src="assets/images/hero-truck.svg" alt="Postim i fundit nga Culi Autotransport" loading="lazy">
+            <img src="assets/images/gallery-1.jpeg" alt="Kamionët e Culi Autotransport me automjete në terminal" loading="lazy">
           </div>
           <div class="social-card-caption">
             <p>"Nisja e radhës nga Gjermania dhe Zvicra drejt Maqedonisë dhe Kosovës! Automjetet mbërrijnë gjithmonë të sigurta dhe në kohë."</p>
@@ -1063,89 +1057,130 @@
       <div class="quote-grid">
         <!-- Form Side -->
         <div class="quote-form-col">
-          <div class="section-tag" data-i18n="quote_tag">OFERTË E SHPEJTË PA DETYRIME</div>
-          <h2 class="section-title" data-i18n="quote_title">KENI NEVOJË PËR TRANSPORTIN E NJË AUTOMJETI?</h2>
-          <p class="section-desc" data-i18n="quote_desc">
-            Na tregoni vendndodhjen e automjetit tuaj dhe destinacionin ku dëshironi të shkojë. Ekipi ynë do t'ju kthejë përgjigje me të gjitha informacionet dhe çmimin më të favorshëm.
-          </p>
+          <div class="quote-form-heading">
+            <div class="section-tag">KËRKESË PËR TRANSPORT</div>
+            <h2 class="section-title">DËRGO KËRKESËN TUAJ</h2>
+            <p class="section-desc">Plotësoni formularin më poshtë dhe ekipi ynë do t’ju kontaktojë sa më shpejt me një ofertë të personalizuar.</p>
+          </div>
 
           <form class="quote-form" id="quoteForm">
-            <!-- Row 1: Name & Phone -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="clientName" data-i18n="form_name">Emri & Mbiemri *</label>
-                <input type="text" id="clientName" required placeholder="p.sh. Agron Krasniqi">
+            <section class="form-workflow-section form-country-selection" aria-labelledby="transportLineTitle">
+              <div class="form-workflow-heading">
+                <span class="form-step-number">1</span>
+                <div><h3 id="transportLineTitle">Zgjidh linjën e transportit</h3><p>Zgjidh prej cilës linjë dëshiron transport të automjetit.</p></div>
               </div>
-              <div class="form-group">
-                <label for="clientPhone" data-i18n="form_phone">Numri i Telefonit / WhatsApp *</label>
-                <input type="tel" id="clientPhone" required placeholder="+41 76 ... ose +49 ...">
+              <div class="country-card-grid">
+                <button class="country-selector-card" type="button" data-country="de" role="radio" aria-checked="false">
+                  <span class="country-flag" aria-hidden="true">🇩🇪</span>
+                  <span class="country-card-copy"><strong>GJERMANI</strong><small>Gjermani ↔ Maqedoni e Veriut / Kosovë</small></span>
+                  <span class="country-selected-icon" aria-hidden="true">✓</span>
+                </button>
+                <button class="country-selector-card is-selected" type="button" data-country="ch" role="radio" aria-checked="true">
+                  <span class="country-flag" aria-hidden="true">🇨🇭</span>
+                  <span class="country-card-copy"><strong>ZVICËR</strong><small>Zvicër ↔ Maqedoni e Veriut / Kosovë</small></span>
+                  <span class="country-selected-icon" aria-hidden="true">✓</span>
+                </button>
               </div>
-            </div>
+              <input type="hidden" id="transportCountry" value="ch">
+            </section>
 
-            <!-- Row 2: Email & Vehicle Type -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="clientEmail" data-i18n="form_email">Email Adresa</label>
-                <input type="email" id="clientEmail" placeholder="shembull@email.com">
+            <section class="form-workflow-section transport-direction-section" aria-labelledby="transportDirectionTitle">
+              <div class="form-workflow-heading">
+                <span class="form-step-number">2</span>
+                <div><h3 id="transportDirectionTitle">Zgjidh drejtimin e transportit</h3><p>Zgjidh në cilin drejtim dëshiron të transportosh automjetin.</p></div>
               </div>
-              <div class="form-group">
-                <label for="vehicleType" data-i18n="form_vehicle_type">Lloji i Automjetit *</label>
-                <select id="vehicleType" required>
-                  <option value="Veturë e zakonshme (Sedan / Hatchback)">Veturë e zakonshme (Sedan / Hatchback)</option>
-                  <option value="SUV / Xhip / Limuzinë">SUV / Xhip / Limuzinë</option>
-                  <option value="Veturë Sportive / Luksoze">Veturë Sportive / Luksoze</option>
-                  <option value="Më shumë se një automjet (Flotë)">Më shumë se një automjet (Flotë)</option>
-                </select>
+              <div class="route-selector-grid" role="radiogroup" aria-label="Drejtimi i transportit">
+                <button class="route-selector-card is-selected" type="button" data-route-index="0" role="radio" aria-checked="true"><span class="route-flags"><span>🇨🇭</span><b>→</b><span>🇲🇰</span></span><strong>Zvicër → Maqedoni e Veriut</strong><span class="route-selected-icon" aria-hidden="true">✓</span></button>
+                <button class="route-selector-card" type="button" data-route-index="1" role="radio" aria-checked="false"><span class="route-flags"><span>🇨🇭</span><b>→</b><span>🇽🇰</span></span><strong>Zvicër → Kosovë</strong><span class="route-selected-icon" aria-hidden="true">✓</span></button>
+                <button class="route-selector-card" type="button" data-route-index="2" role="radio" aria-checked="false"><span class="route-flags"><span>🇲🇰</span><b>→</b><span>🇨🇭</span></span><strong>Maqedoni e Veriut → Zvicër</strong><span class="route-selected-icon" aria-hidden="true">✓</span></button>
+                <button class="route-selector-card" type="button" data-route-index="3" role="radio" aria-checked="false"><span class="route-flags"><span>🇽🇰</span><b>→</b><span>🇨🇭</span></span><strong>Kosovë → Zvicër</strong><span class="route-selected-icon" aria-hidden="true">✓</span></button>
               </div>
-            </div>
+              <input type="hidden" id="transportDirection" value="0">
+            </section>
 
-            <!-- Row 3: Pickup Location -->
-            <div class="form-row">
+            <section class="form-workflow-section" aria-labelledby="personalDetailsTitle">
+              <div class="form-workflow-heading">
+                <span class="form-step-number">3</span>
+                <div><h3 id="personalDetailsTitle">Të dhënat personale</h3></div>
+              </div>
+              <div class="form-row form-row-three">
               <div class="form-group">
-                <label for="pickupCountry" data-i18n="form_pickup_country">Shteti i Marrjes *</label>
-                <select id="pickupCountry" required>
-                  <option value="Gjermani (Deutschland)">Gjermani (Deutschland)</option>
-                  <option value="Zvicër (Schweiz)">Zvicër (Schweiz)</option>
-                  <option value="Maqedoni e Veriut">Maqedoni e Veriut</option>
-                  <option value="Kosovë">Kosovë</option>
-                  <option value="Austri">Austri</option>
-                </select>
+                <label for="clientName">Emri & Mbiemri *</label>
+                <input type="text" id="clientName" required autocomplete="name" placeholder="p.sh. Agron Krasniqi">
               </div>
               <div class="form-group">
-                <label for="pickupCity" data-i18n="form_pickup_city">Qyteti i Marrjes *</label>
-                <input type="text" id="pickupCity" required placeholder="p.sh. München, Zürich, Stuttgart">
+                <label for="clientPhone">Numri i Telefonit / WhatsApp *</label>
+                <input type="tel" id="clientPhone" required autocomplete="tel" placeholder="p.sh. +41 76 123 45 67">
               </div>
-            </div>
+              <div class="form-group">
+                <label for="clientEmail">Email Adresa</label>
+                <input type="email" id="clientEmail" autocomplete="email" placeholder="shembull@email.com">
+              </div>
+              </div>
+            </section>
 
-            <!-- Row 4: Delivery Location -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="deliveryCountry" data-i18n="form_deliv_country">Shteti i Dorëzimit *</label>
-                <select id="deliveryCountry" required>
-                  <option value="Maqedoni e Veriut">Maqedoni e Veriut</option>
-                  <option value="Kosovë">Kosovë</option>
-                  <option value="Gjermani (Deutschland)">Gjermani (Deutschland)</option>
-                  <option value="Zvicër (Schweiz)">Zvicër (Schweiz)</option>
-                  <option value="Austri">Austri</option>
-                </select>
+            <section class="form-workflow-section" aria-labelledby="vehicleDetailsTitle">
+              <div class="form-workflow-heading">
+                <span class="form-step-number">4</span>
+                <div><h3 id="vehicleDetailsTitle">Të dhënat e automjetit</h3></div>
               </div>
-              <div class="form-group">
-                <label for="deliveryCity" data-i18n="form_deliv_city">Qyteti i Dorëzimit *</label>
-                <input type="text" id="deliveryCity" required placeholder="p.sh. Kumanovë, Shkup, Prishtinë">
+              <div class="form-row form-row-four">
+                <div class="form-group">
+                  <label for="vehicleType">Lloji i Automjetit *</label>
+                  <select id="vehicleType" required>
+                    <option value="" selected disabled>Zgjidhni llojin e automjetit</option>
+                    <option value="Vetura / Sedan">Vetura / Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Kombi / Van">Kombi / Van</option>
+                    <option value="Pickup">Pickup</option>
+                    <option value="Automjet sportiv">Automjet sportiv</option>
+                    <option value="Automjet tjetër">Automjet tjetër</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="vehicleBrand">Marka</label>
+                  <input type="text" id="vehicleBrand" placeholder="p.sh. BMW">
+                </div>
+                <div class="form-group">
+                  <label for="vehicleModel">Modeli</label>
+                  <input type="text" id="vehicleModel" placeholder="p.sh. X5">
+                </div>
+                <div class="form-group">
+                  <label for="vehicleYear">Viti</label>
+                  <input type="number" id="vehicleYear" min="1900" max="2100" inputmode="numeric" placeholder="p.sh. 2021">
+                </div>
               </div>
-            </div>
+            </section>
 
-            <!-- Row 5: Date & Notes -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="transportDate" data-i18n="form_date">Koha e Preferuar e Transportit</label>
-                <input type="date" id="transportDate">
+            <section class="form-workflow-section" aria-labelledby="transportDetailsTitle">
+              <div class="form-workflow-heading">
+                <span class="form-step-number">5</span>
+                <div><h3 id="transportDetailsTitle">Detajet e transportit</h3></div>
               </div>
-              <div class="form-group">
-                <label for="transportNotes" data-i18n="form_notes">Detaje Shtesë (Marka, Modeli, Gjendja)</label>
-                <input type="text" id="transportNotes" placeholder="p.sh. BMW X5 viti 2021, në gjendje të rregullt lëvizëse">
+              <div class="form-row route-location-row">
+                <div class="form-group">
+                  <label for="pickupCity">Qyteti i Marrjes *</label>
+                  <select id="pickupCity" required></select>
+                  <input class="other-city-input is-hidden" type="text" id="pickupCityOther" placeholder="Shkruani qytetin e marrjes">
+                </div>
+                <div class="form-group">
+                  <label for="deliveryCity">Qyteti i Dorëzimit *</label>
+                  <select id="deliveryCity" required></select>
+                  <input class="other-city-input is-hidden" type="text" id="deliveryCityOther" placeholder="Shkruani qytetin e dorëzimit">
+                </div>
               </div>
-            </div>
+
+              <div class="form-row form-row-two-wide">
+                <div class="form-group">
+                  <label for="transportDate">Data e Preferuar e Transportit</label>
+                  <input type="date" id="transportDate">
+                </div>
+                <div class="form-group">
+                  <label for="transportNotes">Detaje Shtesë <span class="form-optional">(opsionale)</span></label>
+                  <textarea id="transportNotes" rows="2" placeholder="p.sh. gjendja e automjetit, adresa e saktë, orari, etj."></textarea>
+                </div>
+              </div>
+            </section>
 
             <!-- Buttons -->
             <div class="form-action-buttons">
@@ -1257,8 +1292,8 @@
       <!-- Google Map Container -->
       <div class="map-wrapper">
         <iframe 
-          title="Vendndodhja e Culi Autotransport Kumanovo"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47348.65750247949!2d21.688849!3d42.132223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13546743a1464673%3A0xbce567df484439c2!2sKumanovo%2C%20North%20Macedonia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+          title="Vendndodhja e CuliAutotransport Kumanovë"
+          src="https://www.google.com/maps?q=CuliAutotransport%20Kumanov&amp;ll=42.1442395,21.6861946&amp;z=16&amp;output=embed"
           width="100%" 
           height="450" 
           style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%);" 
@@ -1271,8 +1306,8 @@
           <div class="badge-icon">📍</div>
           <div>
             <strong>CULI KOMPANI / CULI AUTOTRANSPORT</strong>
-            <p>11-ti Noemvri, s. Bedinje b.b., Kumanovo</p>
-            <a href="https://maps.google.com/?q=Kumanovo+Bedinje+Macedonia" target="_blank" rel="noopener noreferrer" class="map-direct-link">
+            <p>CuliAutotransport Kumanovë, Maqedoni e Veriut</p>
+            <a href="https://maps.app.goo.gl/nzb6pJbbh23wpgYf8" target="_blank" rel="noopener noreferrer" class="map-direct-link">
               Hap në Google Maps &rarr;
             </a>
           </div>
@@ -1295,7 +1330,7 @@
             Lider në logjistikën automobilistike dhe transportin ndërkombëtar të veturave që nga viti 1999.
           </p>
           <div class="footer-facts">
-            <span>25+ Kamionë Veturash</span> &bull; 
+            <span>30+ Kamionë Veturash</span> &bull;
             <span>DE &bull; CH &bull; MK</span>
           </div>
         </div>

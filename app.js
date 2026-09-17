@@ -942,7 +942,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      6. GALLERY FILTER TABS & FULLSCREEN LIGHTBOX
      ========================================================================== */
-  const galleryTabs = document.querySelectorAll('.gallery-tab');
   let galleryItems = document.querySelectorAll('.gallery-item');
 
   const galleryPhotos = [
@@ -1116,8 +1115,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  const featuredGalleryTitles = new Set([
+    'Ngarkimi i Lamborghini Urus',
+    'Ferrari ne dorezim',
+    'Lamborghini Revuelto ne transport',
+    'Porsche ne transport nate'
+  ]);
+  const orderedGalleryPhotos = [
+    ...galleryPhotos.filter(photo => featuredGalleryTitles.has(photo.title)),
+    ...galleryPhotos.filter(photo => !featuredGalleryTitles.has(photo.title))
+  ];
+
   galleryItems.forEach((item, index) => {
-    const photo = galleryPhotos[index];
+    const photo = orderedGalleryPhotos[index];
     if (!photo) return;
 
     item.dataset.category = photo.categories;
@@ -1135,7 +1145,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const galleryGrid = document.getElementById('galleryGrid');
-  galleryPhotos.slice(galleryItems.length).forEach(photo => {
+  orderedGalleryPhotos.slice(galleryItems.length).forEach(photo => {
     galleryGrid.insertAdjacentHTML('beforeend', `
       <div class="gallery-item" data-category="${photo.categories}" data-img="${photo.src}" data-title="${photo.title}">
         <img src="${photo.src}" alt="${photo.alt}" loading="lazy">
@@ -1151,42 +1161,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   galleryItems = document.querySelectorAll('.gallery-item');
   const galleryMoreBtn = document.getElementById('galleryMoreBtn');
-  const galleryPageSize = 2;
+  const galleryPageSize = 4;
   let galleryVisibleLimit = galleryPageSize;
-  let activeGalleryFilter = 'all';
 
   function renderGallery() {
-    const matchingItems = Array.from(galleryItems).filter(item => {
-      const categories = item.getAttribute('data-category') || '';
-      return activeGalleryFilter === 'all' || categories.includes(activeGalleryFilter);
+    galleryItems.forEach((item, index) => {
+      item.style.display = index < galleryVisibleLimit ? 'block' : 'none';
     });
 
-    galleryItems.forEach(item => { item.style.display = 'none'; });
-    matchingItems.slice(0, galleryVisibleLimit).forEach(item => { item.style.display = 'block'; });
-
     if (galleryMoreBtn) {
-      galleryMoreBtn.hidden = matchingItems.length <= galleryVisibleLimit;
+      galleryMoreBtn.hidden = galleryVisibleLimit >= galleryItems.length;
     }
   }
 
   renderGallery();
 
-  // Filter functionality
-  galleryTabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      const targetTab = e.currentTarget.getAttribute('data-tab');
-
-      galleryTabs.forEach(t => t.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      activeGalleryFilter = targetTab;
-      galleryVisibleLimit = galleryPageSize;
-      renderGallery();
-    });
-  });
-
   if (galleryMoreBtn) {
     galleryMoreBtn.addEventListener('click', () => {
-      galleryVisibleLimit += galleryPageSize;
+      galleryVisibleLimit = galleryItems.length;
       renderGallery();
     });
   }
@@ -1205,10 +1197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeGalleryList = [];
 
   function getVisibleGalleryItems() {
-    return Array.from(galleryItems).filter(item => {
-      const categories = item.getAttribute('data-category') || '';
-      return activeGalleryFilter === 'all' || categories.includes(activeGalleryFilter);
-    });
+    return Array.from(galleryItems).filter(item => item.style.display !== 'none');
   }
 
   function openLightbox(index) {
@@ -1299,45 +1288,187 @@ document.addEventListener('DOMContentLoaded', () => {
   const quoteForm = document.getElementById('quoteForm');
   const formSuccessBox = document.getElementById('formSuccessBox');
   const whatsappQuoteBtn = document.getElementById('whatsappQuoteBtn');
+  const transportCountry = document.getElementById('transportCountry');
+  const pickupCity = document.getElementById('pickupCity');
+  const deliveryCity = document.getElementById('deliveryCity');
+  const pickupCityOther = document.getElementById('pickupCityOther');
+  const deliveryCityOther = document.getElementById('deliveryCityOther');
+  const countrySelectorCards = document.querySelectorAll('.country-selector-card');
+  const transportDirection = document.getElementById('transportDirection');
+  const routeSelectorCards = document.querySelectorAll('.route-selector-card');
+
+  const transportCountries = {
+    ch: {
+      name: 'Zvicër',
+      whatsapp: '41765637171'
+    },
+    de: {
+      name: 'Gjermani',
+      whatsapp: '4915567086274'
+    }
+  };
+
+  const locationOptions = {
+    ch: { name: 'Zvicër', flag: '🇨🇭', cities: ['Zürich', 'Bern', 'Basel', 'Luzern', 'Winterthur', 'St. Gallen', 'Lausanne', 'Geneva', 'Biel/Bienne', 'Thun', 'Aarau', 'Solothurn', 'Zug', 'Schaffhausen'] },
+    de: { name: 'Gjermani', flag: '🇩🇪', cities: ['Berlin', 'Hamburg', 'München', 'Köln', 'Frankfurt', 'Stuttgart', 'Düsseldorf', 'Dortmund', 'Essen', 'Bremen', 'Hannover', 'Nürnberg', 'Mannheim', 'Karlsruhe', 'Freiburg', 'Ulm', 'Augsburg', 'Heilbronn'] },
+    mk: { name: 'Maqedoni e Veriut', flag: '🇲🇰', cities: ['Shkup', 'Kumanovë', 'Tetovë', 'Gostivar', 'Kërçovë', 'Strugë', 'Ohër', 'Manastir', 'Prilep'] },
+    xk: { name: 'Kosovë', flag: '🇽🇰', cities: ['Prishtinë', 'Prizren', 'Ferizaj', 'Gjilan', 'Pejë', 'Gjakovë', 'Mitrovicë'] }
+  };
+
+  const transportRoutes = {
+    ch: [
+      { from: 'ch', to: 'mk' }, { from: 'ch', to: 'xk' },
+      { from: 'mk', to: 'ch' }, { from: 'xk', to: 'ch' }
+    ],
+    de: [
+      { from: 'de', to: 'mk' }, { from: 'de', to: 'xk' },
+      { from: 'mk', to: 'de' }, { from: 'xk', to: 'de' }
+    ]
+  };
+
+  function populateCitySelect(select, locationKey, placeholder) {
+    if (!select) return;
+
+    const location = locationOptions[locationKey];
+    select.replaceChildren(new Option(placeholder, '', true, true));
+    select.options[0].disabled = true;
+    location.cities.forEach((city) => select.add(new Option(city, city)));
+    select.add(new Option('Tjetër / Other', 'Other'));
+  }
+
+  function toggleOtherCityInput(select, otherInput) {
+    if (!select || !otherInput) return;
+    const isOther = select.value === 'Other';
+    otherInput.classList.toggle('is-hidden', !isOther);
+    otherInput.required = isOther;
+    if (!isOther) otherInput.value = '';
+  }
+
+  function updateRouteCards(countryKey) {
+    transportRoutes[countryKey].forEach((route, index) => {
+      const card = routeSelectorCards[index];
+      const from = locationOptions[route.from];
+      const to = locationOptions[route.to];
+      const flags = card.querySelectorAll('.route-flags span');
+      flags[0].textContent = from.flag;
+      flags[1].textContent = to.flag;
+      card.querySelector('strong').textContent = `${from.name} → ${to.name}`;
+    });
+  }
+
+  function updateRouteSelection(routeIndex) {
+    const countryKey = transportCountry.value;
+    const route = transportRoutes[countryKey][routeIndex];
+    if (!route || !transportDirection) return;
+
+    transportDirection.value = String(routeIndex);
+    routeSelectorCards.forEach((card, index) => {
+      const selected = index === routeIndex;
+      card.classList.toggle('is-selected', selected);
+      card.setAttribute('aria-checked', String(selected));
+    });
+
+    populateCitySelect(pickupCity, route.from, 'Zgjidhni qytetin e marrjes');
+    populateCitySelect(deliveryCity, route.to, 'Zgjidhni qytetin e dorëzimit');
+    toggleOtherCityInput(pickupCity, pickupCityOther);
+    toggleOtherCityInput(deliveryCity, deliveryCityOther);
+  }
+
+  function updateTransportCountry(countryKey) {
+    const country = transportCountries[countryKey];
+    if (!country || !transportCountry) return;
+
+    transportCountry.value = countryKey;
+    countrySelectorCards.forEach((card) => {
+      const selected = card.dataset.country === countryKey;
+      card.classList.toggle('is-selected', selected);
+      card.setAttribute('aria-checked', String(selected));
+    });
+
+    const phoneField = document.getElementById('clientPhone');
+    if (phoneField) {
+      phoneField.placeholder = countryKey === 'ch' ? 'p.sh. +41 76 123 45 67' : 'p.sh. +49 155 670 86274';
+    }
+
+    updateRouteCards(countryKey);
+    updateRouteSelection(0);
+  }
+
+  countrySelectorCards.forEach((card) => {
+    card.addEventListener('click', () => updateTransportCountry(card.dataset.country));
+  });
+
+  routeSelectorCards.forEach((card) => {
+    card.addEventListener('click', () => updateRouteSelection(Number(card.dataset.routeIndex)));
+  });
+
+  if (pickupCity) pickupCity.addEventListener('change', () => toggleOtherCityInput(pickupCity, pickupCityOther));
+  if (deliveryCity) deliveryCity.addEventListener('change', () => toggleOtherCityInput(deliveryCity, deliveryCityOther));
+  if (transportCountry) updateTransportCountry(transportCountry.value || 'ch');
+
+  function getSelectedCity(select, otherInput) {
+    if (!select || !select.value) return 'I paspecifikuar';
+    if (select.value === 'Other') return otherInput.value.trim() || 'Tjetër';
+    return select.value;
+  }
 
   function getFormDataSummary() {
     const name = document.getElementById('clientName').value.trim() || 'Klient';
     const phone = document.getElementById('clientPhone').value.trim() || 'I paspecifikuar';
     const email = document.getElementById('clientEmail').value.trim() || 'I paspecifikuar';
-    const vehicle = document.getElementById('vehicleType').value;
-    const fromCountry = document.getElementById('pickupCountry').value;
-    const fromCity = document.getElementById('pickupCity').value.trim() || '';
-    const toCountry = document.getElementById('deliveryCountry').value;
-    const toCity = document.getElementById('deliveryCity').value.trim() || '';
+    const vehicle = document.getElementById('vehicleType').value || 'I paspecifikuar';
+    const country = transportCountries[transportCountry.value];
+    const route = transportRoutes[transportCountry.value][Number(transportDirection.value)];
+    const brand = document.getElementById('vehicleBrand').value.trim() || 'I paspecifikuar';
+    const model = document.getElementById('vehicleModel').value.trim() || 'I paspecifikuar';
+    const year = document.getElementById('vehicleYear').value.trim() || 'I paspecifikuar';
+    const fromCity = getSelectedCity(pickupCity, pickupCityOther);
+    const toCity = getSelectedCity(deliveryCity, deliveryCityOther);
     const date = document.getElementById('transportDate').value || 'Sa më shpejt';
     const notes = document.getElementById('transportNotes').value.trim() || 'Nuk ka shënime';
 
     return {
-      name, phone, email, vehicle,
-      from: `${fromCity ? fromCity + ', ' : ''}${fromCountry}`,
-      to: `${toCity ? toCity + ', ' : ''}${toCountry}`,
-      date, notes
+      name, phone, email, vehicle, brand, model, year, fromCity, toCity, date, notes,
+      country: country.name,
+      fromCountry: locationOptions[route.from].name,
+      toCountry: locationOptions[route.to].name,
+      whatsapp: country.whatsapp
     };
   }
 
   function generateWhatsAppURL() {
     const data = getFormDataSummary();
-    const msg = 
-`*KËRKESË PËR TRANSPORT AUTOMJETI — CULI AUTOTRANSPORT*
----------------------------------------
-👤 *Emri:* ${data.name}
-📞 *Telefoni:* ${data.phone}
-✉️ *Email:* ${data.email}
-🚗 *Automjeti:* ${data.vehicle}
-📍 *Nga (Marrja):* ${data.from}
-🏁 *Drejt (Dorëzimi):* ${data.to}
-📅 *Data e Dëshiruar:* ${data.date}
-📝 *Detaje Shtesë:* ${data.notes}
----------------------------------------
-Dërguar nga uebsajti zyrtar: culi-autotransport.com`;
+    const msg = `Përshëndetje Culi Autotransport,
 
-    // WhatsApp dispatch target: +41 76 563 71 71 (Switzerland & Dispatch line)
-    return `https://wa.me/41765637171?text=${encodeURIComponent(msg)}`;
+Dëshiroj të kërkoj ofertë për transport të automjetit.
+
+Linja: ${data.country}
+Drejtimi: ${data.fromCountry} → ${data.toCountry}
+
+Emri: ${data.name}
+Telefoni: ${data.phone}
+Email: ${data.email}
+
+Automjeti: ${data.vehicle}
+Marka: ${data.brand}
+Modeli: ${data.model}
+Viti: ${data.year}
+
+Marrja:
+${data.fromCity}, ${data.fromCountry}
+
+Dorëzimi:
+${data.toCity}, ${data.toCountry}
+
+Data e preferuar:
+${data.date}
+
+Detaje shtesë:
+${data.notes}
+
+Faleminderit.`;
+
+    return `https://wa.me/${data.whatsapp}?text=${encodeURIComponent(msg)}`;
   }
 
   if (quoteForm) {
@@ -1360,6 +1491,7 @@ Dërguar nga uebsajti zyrtar: culi-autotransport.com`;
 
   if (whatsappQuoteBtn) {
     whatsappQuoteBtn.addEventListener('click', () => {
+      if (quoteForm && !quoteForm.reportValidity()) return;
       const waUrl = generateWhatsAppURL();
       window.open(waUrl, '_blank');
     });
